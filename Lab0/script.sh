@@ -1,4 +1,3 @@
 #!/bin/bash
-cd ~
-cd dev
-git clone https://github.com/VanWardawg/CS462.git
+cd /home/ubuntu/dev
+git clone https://github.com/VanWardawg/CS462.git</p>
