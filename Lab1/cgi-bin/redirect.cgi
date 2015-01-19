@@ -8,3 +8,6 @@ if($query->param('foo'))
 {
     $query->redirect('www.google.com');
 }
+
+print "Content-type: text/html\n\n";
+print "Hello, World.";
