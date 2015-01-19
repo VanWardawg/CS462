@@ -1,14 +1,9 @@
 #!/usr/bin/perl
-print "Content-type: text/html\n\n";
-print "Hello, World.";
-# use strict;
-# use CGI;
+use strict;
+use warnings;
 
-# my $q = CGI->new;
-# my %headers = map { $_ => $q->http($_) } $q->http();
+use CGI;
 
-# print $q->header('text/plain');
-# print "Got the following headers:\n";
-# for my $header ( keys %headers ) {
-#     print "$header: $headers{$header}\n";
-# }
+my $q = new CGI;
+
+print $q->header('text/html');
