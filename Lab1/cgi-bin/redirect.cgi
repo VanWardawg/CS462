@@ -2,7 +2,7 @@
 use strict;
 use CGI ;
 
-$query = new CGI;
+my $query = new CGI;
 
 if($query->param('foo'))
 {
