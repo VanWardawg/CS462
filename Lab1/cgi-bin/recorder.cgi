@@ -14,7 +14,7 @@ for my $header ( keys %headers ) {
 
 print "Got the following query params\n";
 my @names = $q->param;
-for $name ( @names ) { 
+for my $name ( @names ) { 
 	if ( $name =~ /\_/ ) { next; } else { print "".$name."\t=\t".$q->param($name) . "\n"; 
 } 
 
