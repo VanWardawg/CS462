@@ -5,7 +5,7 @@ use URI;
 
 my $query = new CGI;
 
-if($query->param('foo'))
+if($query->param('foo',-value=>['','true',true]))
 {
 	print $query->redirect('http://google.com');
 }
