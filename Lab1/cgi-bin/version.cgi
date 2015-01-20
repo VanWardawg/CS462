@@ -18,7 +18,7 @@ for my $header ( keys %headers ) {
 		}
 		else {
 			print $q->header('application/json');
-			print '{"version":"Incorrect Accept Header Type"';
+			print '{"version":"Incorrect Accept Header Type}"';
 		}
    }
 }
