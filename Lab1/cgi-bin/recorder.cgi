@@ -12,6 +12,9 @@ for my $header ( keys %headers ) {
     print "$header: $headers{$header}\n";
 }
 
+print "Got the following query params\n";
+print $q->param;
+
 print "Got the following post data\n";
 my $xml = $q->param( 'POSTDATA' );
 print "$xml\n";
