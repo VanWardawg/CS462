@@ -5,11 +5,11 @@ use URI;
 
 my $query = new CGI;
 my $value = $query->param('foo');
-if($value == 'google')
+if($value eq  'google')
 {
 	print $query->redirect('http://google.com');
 }
-elsif ($value == 'bing'){
+elsif ($value eq 'bing'){
 	print $query->redirect('http://bing.com');
 }
 
