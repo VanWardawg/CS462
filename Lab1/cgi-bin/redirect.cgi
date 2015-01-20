@@ -1,12 +1,15 @@
 #!/usr/bin/perl
 use strict;
-use CGI ;
+use CGI;
+use URI;
 
 my $query = new CGI;
 
 if($query->param('foo'))
 {
-    $query->redirect('www.google.com');
+	my $welcome = URI->new_abs("www.google.com", $q->url);
+
+	print $q->redirect( -uri => $welcome);
 }
 
 print "Content-type: text/html\n\n";
