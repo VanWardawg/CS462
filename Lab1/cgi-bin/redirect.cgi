@@ -7,9 +7,7 @@ my $query = new CGI;
 
 if($query->param('foo'))
 {
-	my $welcome = URI->new_abs("www.google.com", $query->url);
-
-	print $query->redirect( -uri => $welcome);
+	print $query->redirect('http://google.com');
 }
 
 print "Content-type: text/html\n\n";
