@@ -4,12 +4,12 @@ use CGI;
 use URI;
 
 my $query = new CGI;
-
-if($query->param('web') == 'google')
+my $value = $query->param('foo');
+if($value == 'google')
 {
 	print $query->redirect('http://google.com');
 }
-elsif ($query->param('web') == 'bing'){
+elsif ($value == 'bing'){
 	print $query->redirect('http://bing.com');
 }
 
