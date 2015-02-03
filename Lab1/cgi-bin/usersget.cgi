@@ -4,6 +4,8 @@ use warnings;
 use CGI;
  
 
+binmode STDOUT, ":utf8";
+use utf8;
 use lib qw(..);
 
 use JSON qw( );
@@ -11,7 +13,7 @@ use JSON qw( );
 my $json;
 {
   local $/; #Enable 'slurp' mode
-  open my $fh, "<", "data.json";
+  open my $fh, "<", "data.json" or die "Can't open '$fh': $!";;
   $json = <$fh>;
   close $fh;
 }
