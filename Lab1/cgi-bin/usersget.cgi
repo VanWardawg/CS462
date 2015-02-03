@@ -13,4 +13,4 @@ foreach my $line (@ary) {
 
 my $q = CGI->new;
 print $q->header('application/json');
-print '@ary';
+print @ary;
