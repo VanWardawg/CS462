@@ -2,9 +2,7 @@
 use strict;
 use warnings;
 use CGI;
-use utf8;
  
-use JSON;
 
 my $json;
 {
