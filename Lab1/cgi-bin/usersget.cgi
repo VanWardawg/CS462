@@ -22,4 +22,4 @@ my $data = $json->decode($json_text);
 
 my $q = CGI->new;
 print $q->header('application/json');
-print '$data';
+print '$json_text';
