@@ -8,7 +8,7 @@ use lib qw(..);
 
 use JSON qw( );
 
-my $filename = 'file.txt';
+my $filename = 'users.json';
 
 my $json_text = do {
    open(my $json_fh, "<:encoding(UTF-8)", $filename)
