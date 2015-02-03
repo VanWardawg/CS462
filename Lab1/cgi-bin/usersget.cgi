@@ -21,5 +21,8 @@ my $json = JSON->new;
 my $data = $json->decode($json_text);
 
 my $q = CGI->new;
+for ( @{$data->{data}} ) {
+   print $_->{name}."\n";
+}
 print $q->header('application/json');
 print '$json_text';
