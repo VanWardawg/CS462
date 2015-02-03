@@ -13,7 +13,7 @@ use JSON qw( );
 my $json;
 {
   local $/; #Enable 'slurp' mode
-  open my $fh, "<", "data.json" or die "Can't open '$fh': $!";;
+  open my $fh, "<", "data.json" ;
   $json = <$fh>;
   close $fh;
 }
