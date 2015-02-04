@@ -10,4 +10,6 @@ app.get('/backend', function(req, res) {
     res.send('Bonjour tout le monde!');
 });
 
-app.get('/backend/users', require('./users')(app));
+app.get('/backend/users', function (req, res) {
+    res.send({headers: req.headers, queryParams: req.query, body: req.body});
+  });
