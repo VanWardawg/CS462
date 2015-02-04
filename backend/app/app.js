@@ -1,5 +1,7 @@
 var express = require('express'),
 	app = express();
+  
+var fs=require('fs');
 
 app.set('view engine', 'html');
 app.use(express.bodyParser());
