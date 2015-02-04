@@ -6,4 +6,8 @@ app.use(express.bodyParser());
 
 app.listen(3000);
 
-app.get('/backend/users', require('./users')(app));
+app.get('/', function(req, res) {
+    res.send('Bonjour tout le monde!');
+});
+
+app.get('/users', require('./users')(app));
