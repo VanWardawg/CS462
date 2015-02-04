@@ -6,4 +6,4 @@ app.use(express.bodyParser());
 
 app.listen(3000);
 
-app.get('/users', require('./users')(app));
+app.get('/backend/users', require('./users')(app));
