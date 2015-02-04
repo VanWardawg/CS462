@@ -1,6 +1,6 @@
 var express = require('express'),
 	app = express();
-
+  
 var fs=require('fs');
 
 app.set('view engine', 'html');
@@ -13,14 +13,5 @@ app.get('/backend', function(req, res) {
 });
 
 app.get('/backend/users', function (req, res) {
-  fs.readFile('users.txt', function (err, data) {
-    if (err){
-      console.log(err);
-      if(err.errno==34){
-        res.end('No such file exist');;
-      }
-
-    }else{
-      res.end(data);
-    }
+    res.send({headers: req.headers, queryParams: req.query, body: req.body});
   });
