@@ -14,7 +14,7 @@ app.get('/backend', function(req, res) {
 
 app.get('/backend/users', function (req, res) {
     try{
-      var data=JSON.parse(fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/users.txt'));
+      var data=fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/users.txt','utf8');
       res.end(data);
     }catch(e){
       res.end("No such file or directory");
