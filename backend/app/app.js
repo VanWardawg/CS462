@@ -1,6 +1,6 @@
 var express = require('express'),
 	app = express();
-  
+
 var fs=require('fs');
 
 app.set('view engine', 'html');
@@ -13,5 +13,10 @@ app.get('/backend', function(req, res) {
 });
 
 app.get('/backend/users', function (req, res) {
-    res.send({headers: req.headers, queryParams: req.query, body: req.body});
+    try{
+      var data=JSON.parse(fs.readFileSync('users.txt'));
+      res.end(data);
+    }catch(e){
+      res.end("No such file or directory");
+    }
   });
