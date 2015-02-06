@@ -16,7 +16,7 @@ angular.module('Lab2App').controller('HomeCtrl', ['$scope','$rootScope','$http',
 		$http.post("https://52.0.11.73/backend/users",$scope.newuser).success(function(data){
 			$rootScope.users.push($scope.user);
 			$window.sessionStorage.username = $scope.newuser.username;
-			$rootScope.user = $scope.user;
+			$rootScope.user = $scope.newuser;
 			$scope.navigateTo($rootScope.user.username);
 		}).error(function(){
 			$rootScope.users.push($scope.user);
