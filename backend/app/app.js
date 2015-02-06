@@ -35,6 +35,12 @@ app.put('/backend/users', function (req, res) {
     res.json(user);
  });
 
+app.post('/backend/users', function (req, res) {
+	data.users.push(req.body);
+    writeToFile(); 
+    res.json(user);
+ });
+
 app.post('/backend/users/push', function (req, res) {
 	var user;
 	for(var i = 0; i < data.users.length;i++){
