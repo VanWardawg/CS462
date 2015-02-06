@@ -1,32 +1,37 @@
 'use strict';
 
-angular.module('Lab2App').controller('HomeCtrl', ['$scope','$http', function ($scope, $http) {
+angular.module('Lab2App').controller('HomeCtrl', ['$scope','$rootScope','$http','$window', function ($scope, $rootScope, $http, $window) {
 
-	$http.get('http://54.174.221.222/CS462/Lab1/cgi-bin/usersget.cgi').success(function(data){
-		$scope.users = data;
-	});
-	$scope.stuff = 3;
-	$scope.users =[
-	{
-		name:'bob',
-		id:'123'
-	},{
-		name:'bob',
-		id:'123'
-	},{
-		name:'bob',
-		id:'123'
-	},{
-		name:'bob',
-		id:'123'
+	if(!$rootScope.users){
+		$rootScope.getUsers();
 	}
-	]
 
 	$scope.register = function() {
-		$http.post($scope.users)
+		for(var i = 0; i < $rootScope.users.length; i++){
+			if($rootScope.users[i].username === $scope.user.username){
+				alert("Invalid Username");
+				return;
+			}
+		}
+		$http.post("https://52.0.11.73/backend/users",$scope.users).success(function(data){
+			$rootScope.users.push($scope.user);
+			$window.sessionStorage.username = $scope.user.username;
+			$rootScope.user = $scope.user;
+			$scope.navigateTo($rootScope.user.username);
+		}).error(function(){
+			$rootScope.users.push($scope.user);
+			$rootScope.user = $scope.user;
+			$scope.navigateTo($rootScope.user.username);
+		});
 	}
 
 	$scope.signIn = function() {
-		$scope.user
+		for(var i = 0; i < $rootScope.users.length; i++){
+			if($rootScope.users[i].username === $scope.user.username){
+				$window.sessionStorage.username = $scope.user.username;
+				$rootScope.user = $scope.users[i];
+				$scope.navigateTo($rootScope.user.username);
+			}
+		}
 	}
 }]);

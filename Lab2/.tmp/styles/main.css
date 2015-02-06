@@ -69,3 +69,11 @@
 .main-page .registered-users .user .username {
   font-size: 24px;
 }
+.checkins {
+  border: 1px solid black;
+  padding: 10px;
+}
+.checkins div {
+  width: 100%;
+  text-align: left;
+}

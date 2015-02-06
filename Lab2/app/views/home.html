@@ -3,11 +3,10 @@
 		<div class = "login-header"> Sign up or Login here</div>
 		<div class = "inputs">
 			UserName<input ng-model="user.username" type="text"/>
-			Password<input ng-model="user.password" type="password"/>
 		</div>
 		<div class = "buttons">
-			<button class="btn" type="submit">REGISTER</button>
-			<button class="btn" type="submit">SIGN IN</button>
+			<button ng-click="register()" class="btn" type="submit">REGISTER</button>
+			<button ng-click="signIn()" class="btn" type="submit">SIGN IN</button>
 		</div>
 	</div>
 	<div class = "registered-users col-xs-3">
@@ -15,7 +14,7 @@
 			Registered Users
 		</div>
 		<div class="col-xs-12 user" ng-repeat="user in users">
-			<div class = "username clickable" ng-click="navigateTo(user.id)">{{user.name}}</div>
+			<div class = "username clickable" ng-click="navigateTo(user.username)">{{user.username}}</div>
 		</div>
 	</div>
 </div>
