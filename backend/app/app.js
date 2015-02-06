@@ -43,15 +43,16 @@ app.post('/backend/users', function (req, res) {
 
 app.post('/backend/users/push', function (req, res) {
 	var _user;
-	console.log(req.body.checkin);
+	var checkin = JSON.parse(req.body.checkin);
+	console.log(JSON.parse(req.body.checkin));
 	data.users.forEach(function (user) {
 		console.log('here');
 		console.log(user.id);
-		console.log(req.body.checkin.user);
-		if(req.body.checkin.user.id === user.id){
+		console.log(checkin.user);
+		if(checkin.user.id === user.id){
 			console.log('matchy time');
 			user.checkins = user.checkins || [];
-			user.checkins.push(req.body.checkin);
+			user.checkins.push(checkin);
 			_user = user;
 		}
 	});
