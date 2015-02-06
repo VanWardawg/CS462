@@ -12,7 +12,7 @@ app.get('/backend', function(req, res) {
     res.send('Bonjour tout le monde!');
 });
 
-var data = fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/data.json','utf8');
+var data = fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/data.json');
 
 app.get('/backend/users', function (req, res) {
     try{
