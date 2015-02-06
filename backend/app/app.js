@@ -17,7 +17,7 @@ var data = fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/data.json','utf8'
 app.get('/backend/users', function (req, res) {
     try{
     	var test = JSON.parse(data);
-      res.send(data);
+      res.json(data);
     }catch(e){
       res.send("No such file or directory");
     }
@@ -33,7 +33,7 @@ app.put('/backend/users', function (req, res) {
 		        console.log("The file was saved!");
 		    }
 		}); 
-      res.send(req.data);
+      res.json(req.data);
     }catch(e){
       res.send("No such file or directory");
     }
@@ -42,7 +42,7 @@ app.put('/backend/users', function (req, res) {
 app.post('/backend/users/push', function (req, res) {
 	var data2 = req.data;
     try{
-      res.send(req.data);
+      res.json(req.data);
     }catch(e){
       res.send("No such file or directory");
     }
