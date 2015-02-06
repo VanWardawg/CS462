@@ -37,7 +37,7 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 			$scope.user.id = data.response.user.id;
 			console.log(data);
 			$http.put('https://52.0.11.73/backend/users',$scope.user).success(function() {
-
+				
 			});
 		});
 	}
