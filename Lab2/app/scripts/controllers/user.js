@@ -11,6 +11,13 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 		return $oauth2.isAuthenticated();
 	}
 
+	$scope.howMany = function() {
+		if($scope.isMe){
+			return 100;
+		}
+		return 1;
+	}
+
 	$scope.setUser = function() {
 		for(var i = 0; i < $rootScope.users.length;i++){
 			if($rootScope.users[i].username === $routeParams.id){

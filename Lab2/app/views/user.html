@@ -4,7 +4,7 @@
 <div class="foursquare btn" ng-if="isMe&&!isAuthenticated()"><button ng-click="authenticate()">Foursquare Sign In</button></div>
 <div class="foursquare btn" ng-if="isMe&&isAuthenticated()&&!user.id"><button ng-click="connectToApp()">Connect Foursquare to App</button></div>
 <div class="foursquare btn" ng-if="isMe&&isAuthenticated()"><button ng-click="getMyCheckins()">Get Checkins</button></div>
-<div class="checkins" ng-repeat="checkin in user.checkins | orderBy:'createdAt':true  | limitTo:1">
+<div class="checkins" ng-repeat="checkin in user.checkins | orderBy:'createdAt':true  | limitTo:howMany()">
 	<div> Check in Text: {{checkin.shout}}</div>
 	<div> Venue: {{checkin.venue.name}}</div>
 </div>
