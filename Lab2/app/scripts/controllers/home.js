@@ -15,7 +15,7 @@ angular.module('Lab2App').controller('HomeCtrl', ['$scope','$rootScope','$http',
 		}
 		$http.post("https://52.0.11.73/backend/users",$scope.newuser).success(function(data){
 			$rootScope.users.push($scope.user);
-			$window.sessionStorage.username = $scope.user.username;
+			$window.sessionStorage.username = $scope.newuser.username;
 			$rootScope.user = $scope.user;
 			$scope.navigateTo($rootScope.user.username);
 		}).error(function(){
@@ -28,7 +28,7 @@ angular.module('Lab2App').controller('HomeCtrl', ['$scope','$rootScope','$http',
 	$scope.signIn = function() {
 		for(var i = 0; i < $rootScope.users.length; i++){
 			if($rootScope.users[i].username === $scope.newuser.username){
-				$window.sessionStorage.username = $scope.user.username;
+				$window.sessionStorage.username = $scope.newuser.username;
 				$rootScope.user = $scope.users[i];
 				$scope.navigateTo($rootScope.user.username);
 			}
