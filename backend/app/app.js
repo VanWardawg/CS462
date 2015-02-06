@@ -38,7 +38,7 @@ app.put('/backend/users', function (req, res) {
 app.post('/backend/users', function (req, res) {
 	data.users.push(req.body);
     writeToFile(); 
-    res.json(user);
+    res.json(req.body);
  });
 
 app.post('/backend/users/push', function (req, res) {
