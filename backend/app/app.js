@@ -17,6 +17,7 @@ var data = fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/data.json');
 app.get('/backend/users', function (req, res) {
     try{
     	var test = JSON.parse(data);
+    	console.log(test);
       res.json(data);
     }catch(e){
       res.send("No such file or directory");
