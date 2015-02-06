@@ -13,7 +13,7 @@ angular.module('Lab2App').controller('HomeCtrl', ['$scope','$rootScope','$http',
 				return;
 			}
 		}
-		$http.post("https://52.0.11.73/backend/users",$scope.users).success(function(data){
+		$http.post("https://52.0.11.73/backend/users",$scope.user).success(function(data){
 			$rootScope.users.push($scope.user);
 			$window.sessionStorage.username = $scope.user.username;
 			$rootScope.user = $scope.user;
