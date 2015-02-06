@@ -45,8 +45,9 @@ app.post('/backend/users/push', function (req, res) {
 	var user;
 	console.log(req.body.checkin, data.users);
 	for(var i = 0; i < data.users.length;i++){
-		if(req.body.checkin.user.id == data.users[i].id){
-			console.log("here", data.users[i].id);
+		console.log("here", data.users[i].id, req.body.checkin.user.id);
+		if(req.body.checkin.user.id === data.users[i].id){
+
 			data.users[i].checkins = data.users[i].checkins || [];
 			data.users[i].checkins.push(req.body.checkin);
 			user = data.users[i];
