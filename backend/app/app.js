@@ -12,16 +12,38 @@ app.get('/backend', function(req, res) {
     res.send('Bonjour tout le monde!');
 });
 
-var data = fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/users.txt','utf8');
+var data = fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/data.json','utf8');
 
 app.get('/backend/users', function (req, res) {
     try{
-    	res.writeHead(200, {
-	      'content-type': 'application/json',
-	      'content-lenght': data.length
-	    });
-      res.end(data);
+    	var test = JSON.parse(data);
+      res.send(data);
     }catch(e){
-      res.end("No such file or directory");
+      res.send("No such file or directory");
+    }
+ });
+
+app.put('/backend/users', function (req, res) {
+
+    try{
+    	fs.writeFile("/home/ubuntu/dev/CS462/backend/app/users.txt", data, function(err) {
+		    if(err) {
+		        console.log(err);
+		    } else {
+		        console.log("The file was saved!");
+		    }
+		}); 
+      res.send(req.data);
+    }catch(e){
+      res.send("No such file or directory");
+    }
+ });
+
+app.post('/backend/users/push', function (req, res) {
+	var data2 = req.data;
+    try{
+      res.send(req.data);
+    }catch(e){
+      res.send("No such file or directory");
     }
  });
