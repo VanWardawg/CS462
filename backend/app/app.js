@@ -59,5 +59,6 @@ function writeToFile(){
 		    }
 		}); 
     }catch(e){
+    	console.log(e);
     }
 }
