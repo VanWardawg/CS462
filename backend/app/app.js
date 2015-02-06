@@ -47,7 +47,7 @@ app.post('/backend/users/push', function (req, res) {
 	data.users.forEach(function (user) {
 		console.log('here');
 		console.log(user.id);
-		console.log(req.body.checkin.user.id);
+		console.log(req.body.checkin.user);
 		if(req.body.checkin.user.id === user.id){
 			console.log('matchy time');
 			user.checkins = user.checkins || [];
