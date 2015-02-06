@@ -12,38 +12,52 @@ app.get('/backend', function(req, res) {
     res.send('Bonjour tout le monde!');
 });
 
-var data = fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/data.json');
+var data = JSON.parse(fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/data.json'));
 
 app.get('/backend/users', function (req, res) {
     try{
-    	var test = JSON.parse(data);
-      res.json(test);
+      res.json(data);
     }catch(e){
       res.send("No such file or directory");
     }
  });
 
 app.put('/backend/users', function (req, res) {
+	var user;
+	for(var i = 0; i < data.users.length;i++){
+		if(req.body.username == data.users[i].username){
+			data.users[i] = req.body;
+			user = data.users[i];
+			break;
+		}
+	}
+    writeToFile(); 
+    res.json(user);
+ });
 
-    try{
-    	fs.writeFile("/home/ubuntu/dev/CS462/backend/app/users.txt", data, function(err) {
+app.post('/backend/users/push', function (req, res) {
+	var user;
+	for(var i = 0; i < data.users.length;i++){
+		if(req.body.id == data.users[i].id){
+			data.users[i] = req.body;
+			user = data.users[i];
+			break;
+		}
+	}
+    writeToFile();
+  	res.json(user);
+
+ });
+
+function writeToFile(){
+	try{
+    	fs.writeFile("/home/ubuntu/dev/CS462/backend/app/data.json", JSON.stringify(data), function(err) {
 		    if(err) {
 		        console.log(err);
 		    } else {
 		        console.log("The file was saved!");
 		    }
 		}); 
-      res.json(req.data);
     }catch(e){
-      res.send("No such file or directory");
     }
- });
-
-app.post('/backend/users/push', function (req, res) {
-	var data2 = req.data;
-    try{
-      res.json(req.data);
-    }catch(e){
-      res.send("No such file or directory");
-    }
- });
+}
