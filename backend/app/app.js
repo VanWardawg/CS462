@@ -12,10 +12,11 @@ app.get('/backend', function(req, res) {
     res.send('Bonjour tout le monde!');
 });
 
+var data = fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/users.txt','utf8');
+
 app.get('/backend/users', function (req, res) {
     try{
-      var data=fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/users.txt','utf8');
-      res.end(JSON.parse(data));
+      res.end(data);
     }catch(e){
       res.end("No such file or directory");
     }
