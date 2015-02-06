@@ -2,6 +2,7 @@
 {{user.username}}
 <div class = "isMe"> Is this me: {{isMe}}</div>
 <div class="foursquare btn" ng-if="isMe&&!isAuthenticated()"><button ng-click="authenticate()">Foursquare Sign In</button></div>
+<div class="foursquare btn" ng-if="isMe&&isAuthenticated()&&!user.id"><button ng-click="connectToApp()">Connect Foursquare to App</button></div>
 <div class="foursquare btn" ng-if="isMe&&isAuthenticated()"><button ng-click="getMyCheckins()">Get Checkins</button></div>
 <div class="checkins" ng-repeat="checkin in user.checkins">
 	<div> Check in Text: {{checkin.shout}}</div>
