@@ -34,18 +34,18 @@ angular.module('Lab2App', [
 
 	$scope.getUsers = function(callback){
 		$http.get('https://52.0.11.73/backend/users').success(function(data){
-		$scope.users = data;
-		$scope.users =[
-			{
-				username:'bob1'
-			},{
-				username:'bob2'
-			},{
-				username:'bob3'
-			},{
-				username:'bob4'
-			}
-		]
+		$scope.users = data.users;
+		// $scope.users =[
+		// 	{
+		// 		username:'bob1'
+		// 	},{
+		// 		username:'bob2'
+		// 	},{
+		// 		username:'bob3'
+		// 	},{
+		// 		username:'bob4'
+		// 	}
+		// ]
 		setUser();
 		if(callback)
 			callback();
