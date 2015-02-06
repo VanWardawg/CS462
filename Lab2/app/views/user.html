@@ -6,7 +6,6 @@
 <div class="foursquare btn" ng-if="isMe&&isAuthenticated()"><button ng-click="getMyCheckins()">Get Checkins</button></div>
 <div class="checkins" ng-repeat="checkin in user.checkins">
 	<div> Check in Text: {{checkin.shout}}</div>
-	<div> User: {{checkin.user.firstName}}</div>
 	<div> Venue: {{checkin.venue.name}}</div>
 </div>
 	<div class="clearfix"></div>
