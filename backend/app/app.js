@@ -16,8 +16,8 @@ var data = fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/users.txt','utf8'
 
 app.get('/backend/users', function (req, res) {
     try{
-      res.end(data);
+      res.end(JSON.parse(data));
     }catch(e){
       res.end("No such file or directory");
     }
-  });
+ });
