@@ -31,5 +31,5 @@ for line in sys.stdin:
 counted_words = word2count.items()
 
 # write the results to STDOUT (standard output)
-for word, count in counted_words:
+for word, count in sorted(counted_words):
 	print '%s\t%s'% (word, count)
