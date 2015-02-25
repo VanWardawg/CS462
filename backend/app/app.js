@@ -88,3 +88,13 @@ function writeToFile(){
     	console.log(e);
     }
 }
+function sendMessage() {
+	
+}
+
+var minutes = 1, the_interval = minutes * 60 * 1000;
+setInterval(function() {
+// Run code
+	sendMessage();
+})
+}, the_interval);
