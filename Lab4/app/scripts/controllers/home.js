@@ -19,11 +19,9 @@ angular.module('Lab2App').controller('HomeCtrl', ['$scope','$rootScope','$http',
 			$rootScope.user = $scope.newuser;
 			$scope.navigateTo($rootScope.user.username);
 		}).error(function(){
-			if($scope.user){
-				$rootScope.users.push($scope.user);
-				$rootScope.user = $scope.user;
-				$scope.navigateTo($rootScope.user.username);
-			}
+			$rootScope.users.push($scope.user);
+			$rootScope.user = $scope.user;
+			$scope.navigateTo($rootScope.user.username);
 		});
 	}
 

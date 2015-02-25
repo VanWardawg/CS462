@@ -10,6 +10,20 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 		return 1;
 	}
 
+	$scope.sendGossipMessage = function() {
+		$rootScope.user.messages = $rootScope.user.messages || [];
+		var message = {
+			"Text":$scope.gossipMessage,
+			"Originator":$rootScope.user.username,
+			"MessageID": $rootScope.user.id + ":" + $rootScope.user.messages.length
+		};
+		$http.post("https://52.0.11.73/backend/users/"+$rootScope.user.id+"/message",message).success(function(data){
+			$rootScope.user = data;
+			$scope.user = $rootScope.user;
+			$scope.gossipMessage = '';
+		});
+	}
+
 	$scope.setUser = function() {
 		for(var i = 0; i < $rootScope.users.length;i++){
 			if($rootScope.users[i].username === $routeParams.id){

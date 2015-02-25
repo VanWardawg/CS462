@@ -30,7 +30,7 @@
 }
 .user-profile {
   width: 400px;
-  height: 400px;
+  height: 240px;
   margin: 0 auto;
   font-size: 24px;
   text-align: center;
@@ -76,4 +76,16 @@
 .checkins div {
   width: 100%;
   text-align: left;
+}
+
+.user-messages {
+  margin:0 auto;
+  width:535px;
+  font-size:24px;
+  text-align:left;
+}
+
+.border {
+  border-bottom:1px solid black;
+  margin-bottom:10px;
 }
