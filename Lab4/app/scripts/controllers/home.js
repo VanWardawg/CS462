@@ -7,9 +7,6 @@ angular.module('Lab2App').controller('HomeCtrl', ['$scope','$rootScope','$http',
 	}
 
 	$scope.register = function() {
-		if(!$rootScope.users){
-			$rootScope.users = [];
-		}
 		for(var i = 0; i < $rootScope.users.length; i++){
 			if($rootScope.users[i].username === $scope.newuser.username){
 				alert("Invalid Username");

@@ -2,7 +2,7 @@ var express = require('express'),
 	app = express();
 
 var fs=require('fs');
-
+var uuid = require('node-uuid');
 app.set('view engine', 'html');
 app.use(express.bodyParser());
 
@@ -36,7 +36,10 @@ app.put('/backend/users', function (req, res) {
  });
 
 app.post('/backend/users', function (req, res) {
-	data.users.push(req.body);
+	var user = req.body;
+	user.id = uuid.v4();
+	data.users.push(user);
+
     writeToFile(); 
     res.json(req.body);
  });
