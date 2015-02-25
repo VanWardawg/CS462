@@ -19,7 +19,7 @@ angular.module('Lab2App', [
 	});
 }])
 
-.run(['$rootScope', '$http', '$location','$oauth2','$window', function ($scope, $http, $location, $oauth2, $window) {
+.run(['$rootScope', '$http', '$location','$window', function ($scope, $http, $location, $window) {
 	var clientId = 'FBV5L0SGE2JI1RHUIHECPMG3CYJRA2VYNJ3005B3WR3CB5TO';
 
 	$scope.getUsers = function(callback){
