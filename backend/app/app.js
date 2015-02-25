@@ -44,6 +44,22 @@ app.post('/backend/users', function (req, res) {
     res.json(req.body);
  });
 
+app.post('/backend/users/:id/message', function (req, res) {
+	var id = req.params.id;
+	var _user;
+	var message = req.body;
+	data.users.forEach(function (user) {
+		if(id === user.id){
+			user.messages = user.messages || [];
+			user.messages.push(message);
+			_user = user;
+		}
+	});
+    writeToFile();
+  	res.json(_user);
+
+ });
+
 app.post('/backend/users/push', function (req, res) {
 	var _user;
 	var checkin = JSON.parse(req.body.checkin);
