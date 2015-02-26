@@ -37,6 +37,18 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 		else {
 			$scope.isMe = false;
 		}
+
+		if($scope.user.messages){
+			for(var i = 0; i< $scope.user.messages.length;i++){
+				var mId = $scope.user.messages[i].MessageID.split(":")[0];
+				if(mId === $scope.user.id){
+					$scope.user.messages[i].isUser = true;
+				}
+				else {
+					$scope.user.messages[i].isUser = false;
+				}
+			}
+		}
 	}
 	if(!$rootScope.users){
 		$rootScope.getUsers($scope.setUser);

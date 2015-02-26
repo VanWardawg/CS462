@@ -12,6 +12,7 @@
 	<div ng-repeat="message in user.messages" class="border">
 		<p>Text:{{message.Text}}</p>
 		<p>Originator:{{message.Originator}}</p>
+		<p>From {{user.username}}: {{message.isUser}}
 		<p>ID:{{message.MessageID}}</p>
 	</div>
 </div>

@@ -52,11 +52,45 @@ app.post('/backend/users/:id/message', function (req, res) {
 		if(id === user.id){
 			user.messages = user.messages || [];
 			user.messages.push(message);
+			user.rumors = user.rumors || {};
+			user.rumors[id] = user.rumors[id] || [];
+			var rumor = {
+				"Rumor": message,
+				"EndPoint":"https://52.0.11.73/backend/users/"+user.id+"gossip"
+			}
+			user.rumors[id].push(rumor);
 			_user = user;
 		}
 	});
     writeToFile();
   	res.json(_user);
+
+ });
+
+app.post('/backend/users/:id/gossip', function (req, res) {
+	var id = req.params.id;
+	var _user;
+	var message = req.body;
+	data.users.forEach(function (user) {
+		if(id === user.id){
+			var origId = message.MessageID.split(":")[0];
+			if(message.rumor){
+				user.rumors[origId].push(message);
+			}
+			else {
+				for(var i = 0; i < user.peers.length;i++){
+					if(user.peers[i].id === origId){
+						user.peers[i].wants = user.peers[i].wants || [];
+						user.peers[i].wants.push(message);
+						break;
+					}
+				}
+				// TODO - add message to processing queue
+			}
+		}
+	});
+    writeToFile();
+  	res.send('Success');
 
  });
 
@@ -88,12 +122,24 @@ function writeToFile(){
     	console.log(e);
     }
 }
-function sendMessage() {
 
+function getPeer(user) {
+	if(!user.peers){
+		return;
+	}
+	user.peers = user.peers || [];
+	peerIndex = Math.floor((Math.random() * user.peers.length) + 1);
+	return user.peers[i];
+}
+
+function sendMessage(user) {
+	peer = 
 }
 
 var minutes = 1, the_interval = minutes * 60 * 1000;
 setInterval(function() {
 // Run code
-	sendMessage();
+	for(var i = 0; i < data.users.length;i++){
+		sendMessage(data.users[i]);
+	}
 }, the_interval);
