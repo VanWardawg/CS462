@@ -13,6 +13,7 @@ app.get('/backend', function(req, res) {
 });
 
 var data = JSON.parse(fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/data.json'));
+var peers = [{url:"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip"}];
 
 app.get('/backend/users', function (req, res) {
     try{
