@@ -75,10 +75,12 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 		if(id === user.id){
 			var origId = message.MessageID.split(":")[0];
 			if(message.rumor){
-				if(user.peers[i].url === message.endPoint){
-					user.peers[i].rumors = user.peers[i].rumors || [];
-					user.peers[i].rumors.push(message);
-					break;
+				for(var i = 0; i < user.peers.length;i++){
+					if(user.peers[i].url === message.endPoint){
+						user.peers[i].rumors = user.peers[i].rumors || [];
+						user.peers[i].rumors.push(message);
+						break;
+					}
 				}
 				user.rumors[origId] = user.rumors[origId] : [];
 				user.rumors[origId].push(message);
