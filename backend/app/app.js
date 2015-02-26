@@ -75,6 +75,12 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 		if(id === user.id){
 			var origId = message.MessageID.split(":")[0];
 			if(message.rumor){
+				if(user.peers[i].url === message.endPoint){
+					user.peers[i].rumors = user.peers[i].rumors || [];
+					user.peers[i].rumors.push(message);
+					break;
+				}
+				user.rumors[origId] = user.rumors[origId] : [];
 				user.rumors[origId].push(message);
 			}
 			else {
@@ -124,15 +130,46 @@ function writeToFile(){
 }
 
 function getPeer(user) {
-	if(!user.peers){
-		return;
-	}
-	user.peers = user.peers || [];
-	peerIndex = Math.floor((Math.random() * user.peers.length) + 1);
+	var peerIndex = Math.floor((Math.random() * user.peers.length) + 1);
 	return user.peers[i];
 }
 
+function prepareMessage(user, peer){
+	var rumor = Math.floor((Math.random() * 3));
+	if(rumor != 2){
+		var total = 0;
+		for(var userId in user.rumors){
+			total++;
+		}
+		var peerValue = peer.id
+		while(peerValue === peer.id){
+			var peerIndex = Math.floor((Math.random() * total) + 1);
+			for(var userId in user.rumors){
+				peerIndex--;
+				if(peerIndex==0){
+					peerValue = userId;
+				}
+			}
+		}
+	}
+	else {
+
+	}
+
+}
+
+function sendMessage(user, peer, message){
+	var rumor = {
+		"Rumor": message,
+		"EndPoint":"https://52.0.11.73/backend/users/"+user.id+"gossip"
+	}
+}
+
 function sendMessage(user) {
+	if(!user.peers){
+		return;
+	}
+	var peer = getPeer(user);
 }
 
 var minutes = 1, the_interval = minutes * 60 * 1000;
