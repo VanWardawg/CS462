@@ -82,7 +82,7 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 						break;
 					}
 				}
-				user.rumors[origId] = user.rumors[origId] : [];
+				user.rumors[origId] = user.rumors[origId] ||  [];
 				user.rumors[origId].push(message);
 			}
 			else {
