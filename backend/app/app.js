@@ -54,6 +54,7 @@ app.post('/backend/users/:id/message', function (req, res) {
 			user.messages = user.messages || [];
 			user.messages.push(message);
 			user.rumors = user.rumors || [];
+			console.log("Adding my own gossip: " + message);
 			var rumor = {
 				"Rumor": message,
 				"EndPoint":"https://52.0.11.73/backend/users/"+user.id+"gossip"
@@ -73,6 +74,7 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 	var message = req.body;
 	data.users.forEach(function (user) {
 		if(id === user.id){
+			console.log("Recieved gossip for user: " + user.id);
 			if(message.Rumor){
 				user.rumors.push(message);
 				var origId = message.rumor.MessageID.split(":")[0];
@@ -196,18 +198,20 @@ function sendMessage(user) {
 	var msg;
 	var peer;
 	var i = 0;
-	while(i < user.peers.length+3 && !msg){
+	while(i < user.peers.length+3 && !msg && !peer){
 		peer = getPeer(user);
 		var msg = prepareMessage(user, peer);
 		i++;
 	}
+	console.log("Sending msg: " + msg);
+	console.log("to: " + peer.url);
 	send(peer,msg);
-
 }
 
 var minutes = 1, the_interval = minutes * 60 * 1000;
 setInterval(function() {
 // Run code
+	console.log("running message updates");
 	for(var i = 0; i < data.users.length;i++){
 		sendMessage(data.users[i]);
 	}
