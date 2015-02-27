@@ -166,6 +166,7 @@ function getMessage(user, peer){
 			}
 		}
 	}
+	return;
 }
 
 function prepareMessage(user, peer){
@@ -192,8 +193,16 @@ function sendMessage(user) {
 	if(!user.peers){
 		return;
 	}
-	var peer = getPeer(user);
-	var msg = prepareMessage(user, peer);
+	var msg;
+	var peer;
+	var i = 0;
+	while(i < user.peers.length+3 && !msg){
+		peer = getPeer(user);
+		var msg = prepareMessage(user, peer);
+		i++;
+	}
+	send(peer,msg);
+
 }
 
 var minutes = 1, the_interval = minutes * 60 * 1000;
