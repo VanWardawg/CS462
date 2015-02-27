@@ -147,11 +147,13 @@ function writeToFile(){
 }
 
 function getPeer(user) {
+	console.log("Getting Peer");
 	var peerIndex = Math.floor((Math.random() * user.peers.length) + 1);
 	return user.peers[i];
 }
 
 function getMessage(user, peer){
+	console.log("Selecting Message");
 	for(var i = 0; i < user.rumors.length;i++){
 		var message = user.rumors[i];
 		var origId = message.rumor.MessageID.split(":")[0];
@@ -172,6 +174,7 @@ function getMessage(user, peer){
 }
 
 function prepareMessage(user, peer){
+	console.log("Preparing Message");
 	var rumor = Math.floor((Math.random() * 3));
 	var message = {};
 	if(rumor != 2){
@@ -187,7 +190,7 @@ function prepareMessage(user, peer){
 	return message;
 }
 
-function send(peer, message){
+function sendRequest(peer, message){
 	request.post(peer.url,message);
 }
 
@@ -205,7 +208,7 @@ function sendMessage(user) {
 	}
 	console.log("Sending msg: " + msg);
 	console.log("to: " + peer.url);
-	send(peer,msg);
+	sendRequest(peer,msg);
 }
 
 var minutes = 1, the_interval = minutes * 60 * 1000;
