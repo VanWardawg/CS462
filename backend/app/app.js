@@ -3,6 +3,7 @@ var express = require('express'),
 
 var fs=require('fs');
 var uuid = require('node-uuid');
+var request = require('request');
 app.set('view engine', 'html');
 app.use(express.bodyParser());
 
@@ -52,13 +53,12 @@ app.post('/backend/users/:id/message', function (req, res) {
 		if(id === user.id){
 			user.messages = user.messages || [];
 			user.messages.push(message);
-			user.rumors = user.rumors || {};
-			user.rumors[id] = user.rumors[id] || [];
+			user.rumors = user.rumors || [];
 			var rumor = {
 				"Rumor": message,
 				"EndPoint":"https://52.0.11.73/backend/users/"+user.id+"gossip"
 			}
-			user.rumors[id].push(rumor);
+			user.rumors.push(rumor);
 			_user = user;
 		}
 	});
@@ -73,27 +73,40 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 	var message = req.body;
 	data.users.forEach(function (user) {
 		if(id === user.id){
-			var origId = message.MessageID.split(":")[0];
-			if(message.rumor){
+			if(message.Rumor){
+				user.rumors.push(message);
+				var origId = message.rumor.MessageID.split(":")[0];
+				var seqId = message.rumor.MessageID.split(":")[1];
+				//update peers wants
 				for(var i = 0; i < user.peers.length;i++){
 					if(user.peers[i].url === message.endPoint){
 						user.peers[i].rumors = user.peers[i].rumors || [];
+						user.peers[i].wants = user.peers[i].wants || {};
 						user.peers[i].rumors.push(message);
+						if(!user.peers[i].wants[origId] || user.peers[i].wants[origId] < seqId){
+							user.peers[i].wants[origId] = seqId;
+						}
 						break;
 					}
 				}
-				user.rumors[origId] = user.rumors[origId] ||  [];
-				user.rumors[origId].push(message);
+				//update my wants
+				user.wants[origId] = user.wants[origId] ||  [];
+				if(!user.wants[origId] || user.wants[origId] < seqId){
+					user.wants[origId] = seqId;
+				}
 			}
 			else {
+				//update peers wants
+				var url = message.endPoint;
 				for(var i = 0; i < user.peers.length;i++){
-					if(user.peers[i].id === origId){
-						user.peers[i].wants = user.peers[i].wants || [];
-						user.peers[i].wants.push(message);
+					if(user.peers[i].url === url){
+						user.peers[i].wants = user.peers[i].wants || {};
+						for(var id in message.want){
+							user.peers.wants[id] = message.want[id]
+						}
 						break;
 					}
 				}
-				// TODO - add message to processing queue
 			}
 		}
 	});
@@ -136,35 +149,43 @@ function getPeer(user) {
 	return user.peers[i];
 }
 
-function prepareMessage(user, peer){
-	var rumor = Math.floor((Math.random() * 3));
-	if(rumor != 2){
-		var total = 0;
-		for(var userId in user.rumors){
-			total++;
-		}
-		var peerValue = peer.id
-		while(peerValue === peer.id){
-			var peerIndex = Math.floor((Math.random() * total) + 1);
-			for(var userId in user.rumors){
-				peerIndex--;
-				if(peerIndex==0){
-					peerValue = userId;
-				}
+function getMessage(user, peer){
+	for(var i = 0; i < user.rumors.length;i++){
+		var message = user.rumors[i];
+		var origId = message.rumor.MessageID.split(":")[0];
+		var seqId = message.rumor.MessageID.split(":")[0];
+		peer.wants = peer.wants || {};
+		if(origId !== peer.id){
+			if(!peer.wants[origId]){
+				peer.wants[origId] = seqId;
+				return message.rumor;
+			}
+			else if(peer.wants[origId] < seqId){
+				peer.wants[origId] = seqId;
+				return message.rumor;
 			}
 		}
 	}
-	else {
-
-	}
-
 }
 
-function sendMessage(user, peer, message){
-	var rumor = {
-		"Rumor": message,
-		"EndPoint":"https://52.0.11.73/backend/users/"+user.id+"gossip"
+function prepareMessage(user, peer){
+	var rumor = Math.floor((Math.random() * 3));
+	var message = {};
+	if(rumor != 2){
+		message.Rumor = getMessage(user,peer);
 	}
+	else {
+		message.Want = {};
+		for(var id in user.wants){
+			message.Want[id] = user.wants[id];
+		}
+	}
+	message.EndPoint = "https://52.0.11.73/backend/users/"+user.id+"gossip";
+	return message;
+}
+
+function send(peer, message){
+	request.post(peer.url,message);
 }
 
 function sendMessage(user) {
@@ -172,6 +193,7 @@ function sendMessage(user) {
 		return;
 	}
 	var peer = getPeer(user);
+	var msg = prepareMessage(user, peer);
 }
 
 var minutes = 1, the_interval = minutes * 60 * 1000;
