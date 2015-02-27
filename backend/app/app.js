@@ -148,11 +148,13 @@ function writeToFile(){
 
 function getPeer(user) {
 	console.log("Getting Peer from list of " + user.peers.length);
-	var peerIndex = 0//Math.floor((Math.random() * user.peers.length));
-	// if(peerIndex == user.peers.length){
-	// 	peerIndex -= 1;
-	// }
+	var peerIndex = Math.floor((Math.random() * user.peers.length));
+	if(peerIndex == user.peers.length){
+		peerIndex -= 1;
+	}
+	console.log("here");
 	console.log("Peer" + user.peers[i].id);
+	console.log("here2");
 	return user.peers[i];
 }
 
