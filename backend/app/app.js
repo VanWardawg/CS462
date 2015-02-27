@@ -183,7 +183,7 @@ function prepareMessage(user, peer){
 	else {
 		message.Want = {};
 		for(var id in user.wants){
-			message.Want[id] = user.wants[id];
+			message.Want[id] = user.wants[id] ? user.wants[id] : 0;
 		}
 	}
 	message.EndPoint = "https://52.0.11.73/backend/users/"+user.id+"gossip";
