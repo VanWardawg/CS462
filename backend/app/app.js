@@ -9,11 +9,16 @@ app.use(express.bodyParser());
 
 app.listen(3000);
 
+var peerList1 = [{"url":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip","id":"26d7e406-0c00-4b85-bb51-5ce814b4cc9a"}];
+var peerList2 = [{"url":"https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip","id":"d281c0cc-f063-4fac-b77e-d38e146341d6"}];
+
 app.get('/backend', function(req, res) {
     res.send('Bonjour tout le monde!');
 });
 
 var data = JSON.parse(fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/data.json'));
+data.users[0].peers = peerList1;
+data.users[1].peers = peerList2;
 
 app.get('/backend/users', function (req, res) {
     try{
