@@ -211,7 +211,7 @@ function sendMessage(user) {
 	sendRequest(peer,msg);
 }
 
-var minutes = 1, the_interval = minutes * 60 * 1000;
+var minutes = .3, the_interval = minutes * 60 * 1000;
 setInterval(function() {
 // Run code
 	console.log("running message updates");
