@@ -157,10 +157,8 @@ function getPeer(user) {
 	if(peerIndex == user.peers.length){
 		peerIndex -= 1;
 	}
-	console.log("here");
-	console.log("Peer" + user.peers[i]);
-	console.log("here2");
-	return user.peers[i];
+	console.log("Peer" + user.peers[peerIndex]);
+	return user.peers[peerIndex];
 }
 
 function getMessage(user, peer){
