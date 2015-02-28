@@ -158,7 +158,7 @@ function getPeer(user) {
 		peerIndex -= 1;
 	}
 	console.log("here");
-	console.log("Peer" + user.peers[i].id);
+	console.log("Peer" + user.peers[i]);
 	console.log("here2");
 	return user.peers[i];
 }
