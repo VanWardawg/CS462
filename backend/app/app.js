@@ -77,6 +77,8 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 	var id = req.params.id;
 	var _user;
 	var message = req.body;
+
+	console.log("Recieving gossip");	
 	data.users.forEach(function (user) {
 		if(id === user.id){
 			console.log("Recieved gossip for user: " + user.id);
