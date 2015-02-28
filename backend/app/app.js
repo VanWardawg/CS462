@@ -84,8 +84,8 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 			console.log("Recieved gossip for user: " + user.id);
 			if(message.Rumor){
 				user.rumors.push(message);
-				var origId = message.rumor.MessageID.split(":")[0];
-				var seqId = message.rumor.MessageID.split(":")[1];
+				var origId = message.Rumor.MessageID.split(":")[0];
+				var seqId = message.Rumor.MessageID.split(":")[1];
 				//update peers wants
 				for(var i = 0; i < user.peers.length;i++){
 					if(user.peers[i].url === message.endPoint){
@@ -110,8 +110,8 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 				for(var i = 0; i < user.peers.length;i++){
 					if(user.peers[i].url === url){
 						user.peers[i].wants = user.peers[i].wants || {};
-						for(var id in message.want){
-							user.peers.wants[id] = message.want[id]
+						for(var id in message.Want){
+							user.peers.wants[id] = message.Want[id]
 						}
 						break;
 					}
@@ -166,18 +166,19 @@ function getPeer(user) {
 function getMessage(user, peer){
 	console.log("Selecting Message");
 	for(var i = 0; i < user.rumors.length;i++){
+		console.log("Rumor Message" + user.rumors[i].Text);
 		var message = user.rumors[i];
-		var origId = message.rumor.MessageID.split(":")[0];
-		var seqId = message.rumor.MessageID.split(":")[0];
+		var origId = message.Rumor.MessageID.split(":")[0];
+		var seqId = message.Rumor.MessageID.split(":")[0];
 		peer.wants = peer.wants || {};
 		if(origId !== peer.id){
 			if(!peer.wants[origId]){
 				peer.wants[origId] = seqId;
-				return message.rumor;
+				return message.Rumor;
 			}
 			else if(peer.wants[origId] < seqId){
 				peer.wants[origId] = seqId;
-				return message.rumor;
+				return message.Rumor;
 			}
 		}
 	}
@@ -190,9 +191,13 @@ function prepareMessage(user, peer){
 	var message = {};
 	if(rumor != 2){
 		message.Rumor = getMessage(user,peer);
+		if(!message.Rumor){
+			return undefined;
+		}
 	}
 	else {
 		message.Want = {};
+		user.wants = user.wants || {};
 		for(var id in user.wants){
 			message.Want[id] = user.wants[id] ? user.wants[id] : 0;
 		}
