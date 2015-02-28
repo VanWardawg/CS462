@@ -213,14 +213,11 @@ function prepareMessage(user, peer){
 }
 
 function sendRequest(peer, message){
-	request.post({url:peer.url,form:message}, function (error, response, body) {
-	  if (!error && response.statusCode == 200) {
-	    console.log("test" + body) // Show the HTML for the Google homepage.
-	  }
-	  else {
-	  	console.log("problem", error, response.statusCode);
-	  }
-	});
+	try{
+	request.post(peer.url);
+	}catch(e){
+		console.log("Error:" + e);
+	}
 	console.log("Finished Sending");
 }
 
