@@ -225,6 +225,7 @@ function sendMessage(user) {
 		i++;
 	}
 	if(!msg){
+		console.log("No Message Returning");
 		return;
 	}
 	console.log("Sending msg: " + msg);
