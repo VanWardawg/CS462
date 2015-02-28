@@ -244,12 +244,20 @@ function sendMessage(user) {
 	console.log("to: " + peer.url);
 	sendRequest(peer,msg);
 }
+var msg = {"Rumor":{
+    "Text":"here",
+    "Originator":"Me",
+    "MessageId":"26d7e406-0c00-4b85-bb51-5ce814b4cc9a:0"
+	},
+	"EndPoint":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip"
+}
+sendRequest(peerList1[0],msg);
 
 var minutes = .3, the_interval = minutes * 60 * 1000;
 setInterval(function() {
 // Run code
 	console.log("running message updates");
 	for(var i = 0; i < data.users.length;i++){
-		sendMessage(data.users[i]);
+		//sendMessage(data.users[i]);
 	}
 }, the_interval);
