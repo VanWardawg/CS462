@@ -81,7 +81,8 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 	console.log("id:" + id);
 	var _user;
 	var message = req.body;
-	console.log("message:" + req.body);
+	console.log("message:" + message);
+	console.log("message Rumor:" + message.rumor);
 	
 	data.users.forEach(function (user) {
 		if(id === user.id){
@@ -92,7 +93,7 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 				var seqId = message.Rumor.MessageID.split(":")[1];
 				//update peers wants
 				for(var i = 0; i < user.peers.length;i++){
-					if(user.peers[i].url === message.endPoint){
+					if(user.peers[i].url === message.EndPoint){
 						user.peers[i].rumors = user.peers[i].rumors || [];
 						user.peers[i].wants = user.peers[i].wants || {};
 						user.peers[i].rumors.push(message);
@@ -110,7 +111,7 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 			}
 			else {
 				//update peers wants
-				var url = message.endPoint;
+				var url = message.EndPoint;
 				for(var i = 0; i < user.peers.length;i++){
 					if(user.peers[i].url === url){
 						user.peers[i].wants = user.peers[i].wants || {};
