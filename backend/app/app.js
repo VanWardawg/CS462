@@ -8,6 +8,7 @@ app.set('view engine', 'html');
 app.use(express.bodyParser());
 
 app.listen(3000);
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 
 var peerList1 = [{"url":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip","id":"26d7e406-0c00-4b85-bb51-5ce814b4cc9a"}];
 var peerList2 = [{"url":"https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip","id":"d281c0cc-f063-4fac-b77e-d38e146341d6"}];
@@ -214,7 +215,7 @@ function prepareMessage(user, peer){
 
 function sendRequest(peer, message){
 	try{
-	request.post(peer.url);
+		request.post(peer.url);
 	}catch(e){
 		console.log("Error:" + e);
 	}
@@ -258,3 +259,11 @@ setInterval(function() {
 		//sendMessage(data.users[i]);
 	}
 }, the_interval);
+
+
+request.get({
+    url: 'https://52.0.11.73/backend/users',
+    agentOptions: {
+        ca: fs.readFileSync('ca.cert.pem')
+    }
+});
