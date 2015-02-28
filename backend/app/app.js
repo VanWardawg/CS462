@@ -219,7 +219,7 @@ function sendMessage(user) {
 	var msg;
 	var peer;
 	var i = 0;
-	while(i < user.peers.length+3 && !msg && !peer){
+	while(i < user.peers.length && !msg){
 		peer = getPeer(user);
 		var msg = prepareMessage(user, peer);
 		i++;
