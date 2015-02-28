@@ -218,6 +218,7 @@ function sendRequest(peer, message){
 	  	console.log("problem", error, response.statusCode);
 	  }
 	});
+	console.log("Finished Sending");
 }
 
 function sendMessage(user) {
