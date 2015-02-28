@@ -16,3 +16,13 @@
 		<p>ID:{{message.MessageID}}</p>
 	</div>
 </div>
+
+<div class="user-messages">
+	<b>Rumors</b>
+	<div ng-repeat="message in user.rumors" class="border">
+		<p>Text:{{message.Rumor.Text}}</p>
+		<p>Originator:{{message.Rumor.Originator}}</p>
+		<p>From {{user.username}}: {{message.isUser}}
+		<p>ID:{{message.Rumor.MessageID}}</p>
+	</div>
+</div>

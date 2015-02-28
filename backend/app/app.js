@@ -74,11 +74,11 @@ app.post('/backend/users/:id/message', function (req, res) {
  });
 
 app.post('/backend/users/:id/gossip', function (req, res) {
+	console.log("Recieving gossip");
 	var id = req.params.id;
 	var _user;
 	var message = req.body;
-
-	console.log("Recieving gossip");	
+	
 	data.users.forEach(function (user) {
 		if(id === user.id){
 			console.log("Recieved gossip for user: " + user.id);
@@ -181,7 +181,7 @@ function getMessage(user, peer){
 			}
 		}
 	}
-	return;
+	return undefined;
 }
 
 function prepareMessage(user, peer){
@@ -202,7 +202,14 @@ function prepareMessage(user, peer){
 }
 
 function sendRequest(peer, message){
-	request.post(peer.url,message);
+	request.post(peer.url,message, function (error, response, body) {
+	  if (!error && response.statusCode == 200) {
+	    console.log(body) // Show the HTML for the Google homepage.
+	  }
+	  else {
+	  	console.log(error, response.statusCode);
+	  }
+	}));
 }
 
 function sendMessage(user) {
