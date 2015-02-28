@@ -85,6 +85,7 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 	console.log("message Rumor:" + message.rumor);
 	
 	data.users.forEach(function (user) {
+		console.log("User:" + user.id);
 		if(id === user.id){
 			console.log("Recieved gossip for user: " + user.id);
 			if(message.Rumor){
