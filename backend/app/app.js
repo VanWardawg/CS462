@@ -166,7 +166,7 @@ function getPeer(user) {
 function getMessage(user, peer){
 	console.log("Selecting Message");
 	for(var i = 0; i < user.rumors.length;i++){
-		console.log("Rumor Message" + user.rumors[i].Text);
+		console.log("Rumor Message is " + user.rumors[i].Text);
 		var message = user.rumors[i];
 		var origId = message.Rumor.MessageID.split(":")[0];
 		var seqId = message.Rumor.MessageID.split(":")[0];
@@ -174,10 +174,12 @@ function getMessage(user, peer){
 		if(origId !== peer.id){
 			if(!peer.wants[origId]){
 				peer.wants[origId] = seqId;
+				console.log("Rumor Message2 is " + message.Rumor.Text);
 				return message.Rumor;
 			}
 			else if(peer.wants[origId] < seqId){
 				peer.wants[origId] = seqId;
+				console.log("Rumor Message3 is " + message.Rumor.Text);
 				return message.Rumor;
 			}
 		}
@@ -192,6 +194,7 @@ function prepareMessage(user, peer){
 	if(rumor != 2){
 		message.Rumor = getMessage(user,peer);
 		if(!message.Rumor){
+			console.log("Selected Rumor is: undefined");
 			return undefined;
 		}
 		console.log("Selected Rumor Text:" + message.Rumor.Text);
