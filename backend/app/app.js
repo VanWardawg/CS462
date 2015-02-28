@@ -204,10 +204,10 @@ function prepareMessage(user, peer){
 function sendRequest(peer, message){
 	request.post(peer.url,message, function (error, response, body) {
 	  if (!error && response.statusCode == 200) {
-	    console.log(body) // Show the HTML for the Google homepage.
+	    console.log("test" + body) // Show the HTML for the Google homepage.
 	  }
 	  else {
-	  	console.log(error, response.statusCode);
+	  	console.log("problem", error, response.statusCode);
 	  }
 	});
 }
@@ -223,6 +223,9 @@ function sendMessage(user) {
 		peer = getPeer(user);
 		var msg = prepareMessage(user, peer);
 		i++;
+	}
+	if(!msg){
+		return;
 	}
 	console.log("Sending msg: " + msg);
 	console.log("to: " + peer.url);
