@@ -194,7 +194,7 @@ function prepareMessage(user, peer){
 		if(!message.Rumor){
 			return undefined;
 		}
-		console.log("Selected Rumor Text:" + message.Rumor.text);
+		console.log("Selected Rumor Text:" + message.Rumor.Text);
 	}
 	else {
 		console.log("Preparing Want");
