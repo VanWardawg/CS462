@@ -123,9 +123,9 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 					}
 				}
 			}
+			break;
 		}
 	}
-    writeToFile();
   	res.send('Success');
 
  });
@@ -262,4 +262,5 @@ setInterval(function() {
 	for(var i = 0; i < data.users.length;i++){
 		sendMessage(data.users[i]);
 	}
+    writeToFile();
 }, the_interval);
