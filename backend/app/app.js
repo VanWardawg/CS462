@@ -209,7 +209,7 @@ function sendRequest(peer, message){
 	  else {
 	  	console.log(error, response.statusCode);
 	  }
-	}));
+	});
 }
 
 function sendMessage(user) {
