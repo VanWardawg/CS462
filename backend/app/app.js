@@ -259,11 +259,3 @@ setInterval(function() {
 		//sendMessage(data.users[i]);
 	}
 }, the_interval);
-
-
-request.get({
-    url: 'https://52.0.11.73/backend/users',
-    agentOptions: {
-        ca: fs.readFileSync('ca.cert.pem')
-    }
-});
