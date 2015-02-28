@@ -78,8 +78,10 @@ app.post('/backend/users/:id/message', function (req, res) {
 app.post('/backend/users/:id/gossip', function (req, res) {
 	console.log("Recieving gossip");
 	var id = req.params.id;
+	console.log("id:" + id);
 	var _user;
 	var message = req.body;
+	console.log("message:" + req.body);
 	
 	data.users.forEach(function (user) {
 		if(id === user.id){
