@@ -194,20 +194,23 @@ function prepareMessage(user, peer){
 		if(!message.Rumor){
 			return undefined;
 		}
+		console.log("Selected Rumor Text:" + message.Rumor.text);
 	}
 	else {
+		console.log("Preparing Want");
 		message.Want = {};
 		user.wants = user.wants || {};
 		for(var id in user.wants){
 			message.Want[id] = user.wants[id] ? user.wants[id] : 0;
 		}
+		console.log("Done Preparing Want:");
 	}
 	message.EndPoint = "https://52.0.11.73/backend/users/"+user.id+"/gossip";
 	return message;
 }
 
 function sendRequest(peer, message){
-	request.post(peer.url,message, function (error, response, body) {
+	request.post(peer.url,{ form:message}, function (error, response, body) {
 	  if (!error && response.statusCode == 200) {
 	    console.log("test" + body) // Show the HTML for the Google homepage.
 	  }
