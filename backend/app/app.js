@@ -83,8 +83,8 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 	var message = req.body;
 	console.log("message:" + message);
 	console.log("message Rumor:" + message.rumor);
-	
-	data.users.forEach(function (user) {
+	for(var i = 0; i < data.users.length;i++){
+		var user = data.users[i];
 		console.log("User:" + user.id + " id: " + id);
 		if(id == user.id){
 			console.log("Recieved gossip for user: " + user.id);
@@ -124,7 +124,7 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 				}
 			}
 		}
-	});
+	}
     writeToFile();
   	res.send('Success');
 
