@@ -62,7 +62,7 @@ app.post('/backend/users/:id/message', function (req, res) {
 			console.log("Adding my own gossip: " + message);
 			var rumor = {
 				"Rumor": message,
-				"EndPoint":"https://52.0.11.73/backend/users/"+user.id+"gossip"
+				"EndPoint":"https://52.0.11.73/backend/users/"+user.id+"/gossip"
 			}
 			user.rumors.push(rumor);
 			_user = user;
@@ -197,7 +197,7 @@ function prepareMessage(user, peer){
 			message.Want[id] = user.wants[id] ? user.wants[id] : 0;
 		}
 	}
-	message.EndPoint = "https://52.0.11.73/backend/users/"+user.id+"gossip";
+	message.EndPoint = "https://52.0.11.73/backend/users/"+user.id+"/gossip";
 	return message;
 }
 
