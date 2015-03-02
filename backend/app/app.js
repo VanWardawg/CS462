@@ -153,6 +153,7 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 
  });
 app.post('/backend/users/:id/peers', function (req, res) {
+	var id = req.params.id;
 	var _user;
 	var peer = req.body;
 	for(var i = 0; i < data.users.length;i++){

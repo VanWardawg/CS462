@@ -24,6 +24,9 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 
 	}
 	$scope.addSimilarPeer = function() {
+		if($scope.selectedPeer.id == $rootScope.user.id ){
+			alert("You cannot add yourself");
+		}
 		if($scope.selectedPeer == null){
 			return;
 		}

@@ -5,8 +5,18 @@
 	Send a Gossip Message
 	<textarea type="text" ng-model="gossipMessage"></textarea><br>
 	<button type="button" ng-click="sendGossipMessage()">Send</button>
-	<select ng-options = "user.username in users" ng-model="selectedPeer">
+	<br>
+	Add Peer
+	<select ng-options = "user.username for user in users" ng-model="selectedPeer">
+	<option value="">Select A Peer</option>
 	</select>
+	<br>
+	<button type="button" ng-click="addSimilarPeer()"> Add Selected Peer</button>
+	<br>
+	Add Peer by URL<input ng-model="peerUrl"/>
+	<br>
+	<button type="button" ng-click="addOtherPeer()"> Add Selected Peer By URL</button>
+	<br>
 </div>
 </div>
 
