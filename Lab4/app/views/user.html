@@ -1,26 +1,31 @@
 <div class = "user-profile">
 <b>{{user.username}}</b> is located at : {{user.url}}
+
+</div>
 <div class = "isMe"> Is this me: {{isMe}}</div>
 <div class = "inputStuff" ng-show="isMe">
 	Send a Gossip Message
 	<textarea type="text" ng-model="gossipMessage"></textarea><br>
 	<button type="button" ng-click="sendGossipMessage()">Send</button>
 	<br>
+</div>
+<div class = "inputStuff" ng-show="isMe">
 	Add Peer
 	<select ng-options = "user.username for user in users" ng-model="selectedPeer">
 	<option value="">Select A Peer</option>
 	</select>
 	<br>
 	<button type="button" ng-click="addSimilarPeer()"> Add Selected Peer</button>
-	<br>
+</div>
+
+<div class = "inputStuff" ng-show="isMe">
 	Add Peer by URL<input ng-model="peerUrl"/>
 	<br>
 	<button type="button" ng-click="addOtherPeer()"> Add Selected Peer By URL</button>
 	<br>
 </div>
-</div>
 <div class="user-messages">
-	<b>Rumors</b>
+	<span><b>Rumors</b></span>
 	<div ng-repeat="message in user.rumors | reverse" class="border">
 		<p>Text:{{message.Rumor.Text}}</p>
 		<p>Originator:{{message.Rumor.Originator}}</p>
