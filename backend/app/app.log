@@ -1,0 +1,296 @@
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Selected Rumor is: undefined
+No Message Returning
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Rumor Message2 is test
+Selected Rumor Text:test
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip
+Finished Sending
+The file was saved!
+Recieving gossip
+id:d281c0cc-f063-4fac-b77e-d38e146341d6
+message:{"Rumor":{"Text":"test","Originator":"kevin","MessageID":"26d7e406-0c00-4b85-bb51-5ce814b4cc9a:0"},"EndPoint":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: d281c0cc-f063-4fac-b77e-d38e146341d6
+Recieved gossip for user: d281c0cc-f063-4fac-b77e-d38e146341d6
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Preparing Want
+Done Preparing Want:
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip
+Finished Sending
+The file was saved!
+Recieving gossip
+id:d281c0cc-f063-4fac-b77e-d38e146341d6
+message:{"EndPoint":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: d281c0cc-f063-4fac-b77e-d38e146341d6
+Recieved gossip for user: d281c0cc-f063-4fac-b77e-d38e146341d6
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Preparing Want
+Done Preparing Want:
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip
+Finished Sending
+The file was saved!
+Recieving gossip
+id:d281c0cc-f063-4fac-b77e-d38e146341d6
+message:{"EndPoint":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: d281c0cc-f063-4fac-b77e-d38e146341d6
+Recieved gossip for user: d281c0cc-f063-4fac-b77e-d38e146341d6
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+The file was saved!
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+The file was saved!
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Preparing Want
+Done Preparing Want:
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip
+Finished Sending
+The file was saved!
+Recieving gossip
+id:d281c0cc-f063-4fac-b77e-d38e146341d6
+message:{"EndPoint":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: d281c0cc-f063-4fac-b77e-d38e146341d6
+Recieved gossip for user: d281c0cc-f063-4fac-b77e-d38e146341d6
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Preparing Want
+Done Preparing Want:
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip
+Finished Sending
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Preparing Want
+Done Preparing Want:
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip
+Finished Sending
+The file was saved!
+Recieving gossip
+id:26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+message:{"Want":{"26d7e406-0c00-4b85-bb51-5ce814b4cc9a":"0"},"EndPoint":"https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+User:26d7e406-0c00-4b85-bb51-5ce814b4cc9a id: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+Recieved gossip for user: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+Recieving gossip
+id:d281c0cc-f063-4fac-b77e-d38e146341d6
+message:{"EndPoint":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: d281c0cc-f063-4fac-b77e-d38e146341d6
+Recieved gossip for user: d281c0cc-f063-4fac-b77e-d38e146341d6
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Preparing Want
+Done Preparing Want:
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip
+Finished Sending
+The file was saved!
+Recieving gossip
+id:d281c0cc-f063-4fac-b77e-d38e146341d6
+message:{"EndPoint":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: d281c0cc-f063-4fac-b77e-d38e146341d6
+Recieved gossip for user: d281c0cc-f063-4fac-b77e-d38e146341d6
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+The file was saved!
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Preparing Want
+Done Preparing Want:
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip
+Finished Sending
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+The file was saved!
+Recieving gossip
+id:26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+message:{"Want":{"26d7e406-0c00-4b85-bb51-5ce814b4cc9a":"0"},"EndPoint":"https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+User:26d7e406-0c00-4b85-bb51-5ce814b4cc9a id: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+Recieved gossip for user: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Preparing Want
+Done Preparing Want:
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip
+Finished Sending
+The file was saved!
+Recieving gossip
+id:d281c0cc-f063-4fac-b77e-d38e146341d6
+message:{"EndPoint":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: d281c0cc-f063-4fac-b77e-d38e146341d6
+Recieved gossip for user: d281c0cc-f063-4fac-b77e-d38e146341d6
+Adding my own gossip: [object Object]
+The file was saved!
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Rumor Message is undefined
+Rumor Message2 is Hi Kevin
+Selected Rumor Text:Hi Kevin
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip
+Finished Sending
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+The file was saved!
+Recieving gossip
+id:26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+message:{"Rumor":{"Text":"Hi Kevin","Originator":"bob","MessageID":"d281c0cc-f063-4fac-b77e-d38e146341d6:0"},"EndPoint":"https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+User:26d7e406-0c00-4b85-bb51-5ce814b4cc9a id: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+Recieved gossip for user: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+running message updates
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Preparing Want
+Done Preparing Want:
+Sending msg: [object Object]
+to: https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip
+Finished Sending
+Getting Peer from list of 1
+Peer[object Object]
+Preparing Message
+Selecting Message
+Rumor Message is undefined
+Rumor Message is undefined
+Selected Rumor is: undefined
+No Message Returning
+The file was saved!
+Recieving gossip
+id:26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+message:{"Want":{"26d7e406-0c00-4b85-bb51-5ce814b4cc9a":"0"},"EndPoint":"https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip"}
+message Rumor:undefined
+User:d281c0cc-f063-4fac-b77e-d38e146341d6 id: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+User:26d7e406-0c00-4b85-bb51-5ce814b4cc9a id: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
+Recieved gossip for user: 26d7e406-0c00-4b85-bb51-5ce814b4cc9a
