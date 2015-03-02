@@ -171,6 +171,7 @@ function getPeer(user) {
 
 function getMessage(user, peer){
 	console.log("Selecting Message");
+	user.rumors = user.rumors || [];
 	for(var i = 0; i < user.rumors.length;i++){
 		console.log("Rumor Message is " + user.rumors[i].Text);
 		var message = user.rumors[i];
