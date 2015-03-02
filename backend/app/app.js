@@ -12,7 +12,8 @@ app.listen(3000);
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 var peerList1 = [{"url":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip","id":"26d7e406-0c00-4b85-bb51-5ce814b4cc9a"}];
-var peerList2 = [{"url":"https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip","id":"d281c0cc-f063-4fac-b77e-d38e146341d6"}];
+var peerList2 = [{"url":"https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip","id":"d281c0cc-f063-4fac-b77e-d38e146341d6"},{"url":"https://52.0.11.73/backend/users/e0eb7037-92e7-45b2-bcd7-68e7883665d4/gossip","id":"e0eb7037-92e7-45b2-bcd7-68e7883665d4"}];
+var peerList2 = [{"url":"https://52.0.11.73/backend/users/e0eb7037-92e7-45b2-bcd7-68e7883665d4/gossip","id":"e0eb7037-92e7-45b2-bcd7-68e7883665d4"}];
 
 app.get('/backend', function(req, res) {
     res.send('Bonjour tout le monde!');
@@ -21,6 +22,7 @@ app.get('/backend', function(req, res) {
 var data = JSON.parse(fs.readFileSync('/home/ubuntu/dev/CS462/backend/app/data.json'));
 data.users[0].peers = peerList1;
 data.users[1].peers = peerList2;
+data.users[2].peers = peerList1;
 
 app.get('/backend/users', function (req, res) {
     try{
@@ -89,15 +91,25 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 		if(id == user.id){
 			console.log("Recieved gossip for user: " + user.id);
 			if(message.Rumor){
-				user.rumors.push(message);
 				var origId = message.Rumor.MessageID.split(":")[0];
 				var seqId = message.Rumor.MessageID.split(":")[1];
+
+				user.rumors = user.rumors || [];
+				var alreadyHas = false;
+				for(var i = 0; i < user.rumors.length; i++){
+					if(user.rumors[i].Rumor.MessageID == message.Rumor.MessageID){
+						alreadyHas = true;
+						break;
+					}
+				}
+				if(!alreadyHas)
+					user.rumors.push(message);
 				//update peers wants
 				for(var i = 0; i < user.peers.length;i++){
 					if(user.peers[i].url === message.EndPoint){
-						user.peers[i].rumors = user.peers[i].rumors || [];
+						//user.peers[i].rumors = user.peers[i].rumors || [];
 						user.peers[i].wants = user.peers[i].wants || {};
-						user.peers[i].rumors.push(message);
+						//user.peers[i].rumors.push(message);
 						if(!user.peers[i].wants[origId] || user.peers[i].wants[origId] < seqId){
 							user.peers[i].wants[origId] = seqId;
 						}
