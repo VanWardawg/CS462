@@ -189,6 +189,7 @@ function getMessage(user, peer){
 		var seqId = message.Rumor.MessageID.split(":")[0];
 		peer.wants = peer.wants || {};
 		if(origId !== peer.id){
+			console.log("here");
 			if(!peer.wants[origId]){
 				peer.wants[origId] = seqId;
 				console.log("Rumor Message2 is " + message.Rumor.Text);
@@ -250,6 +251,7 @@ function sendMessage(user) {
 	var i = 0;
 	while(i < user.peers.length && !msg){
 		peer = getPeer(user);
+		console.log("to peer:" + peer.id);
 		var msg = prepareMessage(user, peer);
 		i++;
 	}
