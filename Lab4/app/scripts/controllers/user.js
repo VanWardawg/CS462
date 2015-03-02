@@ -58,3 +58,9 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 	}
 
 }]);
+
+angular.module('Lab2App').filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
