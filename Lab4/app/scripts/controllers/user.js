@@ -2,12 +2,45 @@
 
 angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$rootScope','$http', function ($scope, $routeParams, $rootScope, $http) {
 
+	if(!$rootScope.users){
+		$rootScope.getUsers();
+	}
 
 	$scope.howMany = function() {
 		if($scope.isMe){
 			return 100;
 		}
 		return 1;
+	}
+
+	$scope.addOtherPeer = function() {
+		if($scope.peerUrl == null){
+			return;
+		}
+		var peer = {
+			url:$scope.peerUrl
+		}
+		addPeer(peer);
+
+	}
+	$scope.addSimilarPeer = function() {
+		if($scope.selectedPeer == null){
+			return;
+		}
+		var peer = {
+			url:"https://52.0.11.73/backend/users/"+$scope.selectedPeer.id+"/gossip",
+			id:$scope.selectedPeer.id
+		}
+		addPeer(peer);
+		
+	}
+
+	function addPeer(peer){
+		$http.post("https://52.0.11.73/backend/users/"+$rootScope.user.id+"/peers",peer).success(function(data){
+			$rootScope.user = data;
+			$scope.user = $rootScope.user;
+			$scope.gossipMessage = '';
+		});
 	}
 
 	$scope.sendGossipMessage = function() {

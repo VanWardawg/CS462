@@ -5,6 +5,8 @@
 	Send a Gossip Message
 	<textarea type="text" ng-model="gossipMessage"></textarea><br>
 	<button type="button" ng-click="sendGossipMessage()">Send</button>
+	<select ng-options = "user.username in users" ng-model="selectedPeer">
+	</select>
 </div>
 </div>
 
