@@ -13,7 +13,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 var peerList1 = [{"url":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip","id":"26d7e406-0c00-4b85-bb51-5ce814b4cc9a"}];
 var peerList2 = [{"url":"https://52.0.11.73/backend/users/d281c0cc-f063-4fac-b77e-d38e146341d6/gossip","id":"d281c0cc-f063-4fac-b77e-d38e146341d6"},{"url":"https://52.0.11.73/backend/users/e0eb7037-92e7-45b2-bcd7-68e7883665d4/gossip","id":"e0eb7037-92e7-45b2-bcd7-68e7883665d4"}];
-var peerList2 = [{"url":"https://52.0.11.73/backend/users/e0eb7037-92e7-45b2-bcd7-68e7883665d4/gossip","id":"e0eb7037-92e7-45b2-bcd7-68e7883665d4"}];
+var peerList3 = [{"url":"https://52.0.11.73/backend/users/e0eb7037-92e7-45b2-bcd7-68e7883665d4/gossip","id":"e0eb7037-92e7-45b2-bcd7-68e7883665d4"}];
 
 app.get('/backend', function(req, res) {
     res.send('Bonjour tout le monde!');
@@ -253,6 +253,7 @@ function sendMessage(user) {
 		peer = getPeer(user);
 		console.log("to peer:" + peer.id);
 		var msg = prepareMessage(user, peer);
+		console.log("message is:" + msg + " i:" + i + " peer.length:" + user.peers.length);
 		i++;
 	}
 	if(!msg){
