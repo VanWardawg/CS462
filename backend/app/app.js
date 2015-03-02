@@ -63,7 +63,7 @@ app.post('/backend/users/:id/message', function (req, res) {
 			user.messages = user.messages || [];
 			user.messages.push(message);
 			user.rumors = user.rumors || [];
-			console.log("Adding my own gossip: " + message);
+			debug("Adding my own gossip: " + message);
 			var rumor = {
 				"Rumor": message,
 				"EndPoint":"https://52.0.11.73/backend/users/"+user.id+"/gossip"
@@ -78,18 +78,14 @@ app.post('/backend/users/:id/message', function (req, res) {
  });
 
 app.post('/backend/users/:id/gossip', function (req, res) {
-	console.log("Recieving gossip");
 	var id = req.params.id;
-	console.log("id:" + id);
+	debug("User:" + id + " Recieving Gossip");
 	var _user;
 	var message = req.body;
-	console.log("message:" + JSON.stringify(message));
-	console.log("message Rumor:" + message.Rumor);
+	debug("Message Recieved:" + JSON.stringify(message));
 	for(var i = 0; i < data.users.length;i++){
 		var user = data.users[i];
-		console.log("User:" + user.id + " id: " + id);
 		if(id == user.id){
-			console.log("Recieved gossip for user: " + user.id);
 			if(message.Rumor){
 				var origId = message.Rumor.MessageID.split(":")[0];
 				var seqId = message.Rumor.MessageID.split(":")[1];
@@ -180,24 +176,19 @@ function getPeer(user) {
 }
 
 function getMessage(user, peer){
-	console.log("Selecting Message");
 	user.rumors = user.rumors || [];
 	for(var i = 0; i < user.rumors.length;i++){
-		console.log("Rumor Message is " + user.rumors[i].Rumor.Text);
 		var message = user.rumors[i];
 		var origId = message.Rumor.MessageID.split(":")[0];
 		var seqId = message.Rumor.MessageID.split(":")[0];
 		peer.wants = peer.wants || {};
 		if(origId !== peer.id){
-			console.log("here");
 			if(!peer.wants[origId]){
 				peer.wants[origId] = seqId;
-				console.log("Rumor Message2 is " + message.Rumor.Text);
 				return message.Rumor;
 			}
 			else if(peer.wants[origId] < seqId){
 				peer.wants[origId] = seqId;
-				console.log("Rumor Message3 is " + message.Rumor.Text);
 				return message.Rumor;
 			}
 		}
@@ -226,18 +217,25 @@ function prepareMessage(user, peer){
 	return message;
 }
 
+function debug(msg){
+	var debug = false;
+	if(debug){
+		console.log(msg);
+	}
+}
+
 function sendRequest(peer, message){
 	if(message.Rumor){
-		console.log("User sending Rumor msg:" + message.Rumor.MessageID);
+		debug("User sending Rumor msg:" + message.Rumor.MessageID);
 	}
 	else {
-		console.log("User sending Want msg");
+		debug("User sending Want msg");
 	}
-	console.log("Sending to: " + message.EndPoint);
+	debug("Sending to: " + message.EndPoint);
 	try{
 		request.post(peer.url,{form:message});
 	}catch(e){
-		console.log("Error:" + e);
+		debug("Error:" + e);
 	}
 }
 
@@ -245,28 +243,28 @@ function sendMessage(user) {
 	if(!user.peers){
 		return;
 	}
-	console.log("User:" + user.id + " is trying to send a msg");
+	debug("User:" + user.id + " is trying to send a msg");
 	var msg;
 	var peer;
 	var i = 0;
 	while(i < user.peers.length && !msg){
 		peer = getPeer(user);
-		console.log("to peer:" + peer.id);
+		debug("to peer:" + peer.id);
 		var msg = prepareMessage(user, peer);
-		console.log("message is:" + msg + " i:" + i + " peer.length:" + user.peers.length);
+		debug("message is:" + msg + " i:" + i + " peer.length:" + user.peers.length);
 		i++;
 	}
 	if(!msg){
-		console.log("No Message Returning");
+		debug("No Message to send so Returning");
 		return;
 	}
 	sendRequest(peer,msg);
 }
 
-var minutes = .3, the_interval = minutes * 60 * 1000;
+var minutes = .1, the_interval = minutes * 60 * 1000;
 setInterval(function() {
 // Run code
-	console.log("Running message updates");
+	debug("Running message updates");
 	for(var i = 0; i < data.users.length;i++){
 		sendMessage(data.users[i]);
 	}
