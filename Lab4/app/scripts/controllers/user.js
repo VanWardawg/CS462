@@ -49,6 +49,18 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 				}
 			}
 		}
+
+		if($scope.user.rumors){
+			for(var i = 0; i< $scope.user.rumors.length;i++){
+				var mId = $scope.user.rumors[i].Rumor.MessageID.split(":")[0];
+				if(mId === $scope.user.id){
+					$scope.user.rumors[i].isUser = true;
+				}
+				else {
+					$scope.user.rumors[i].isUser = false;
+				}
+			}
+		}
 	}
 	if(!$rootScope.users){
 		$rootScope.getUsers($scope.setUser);
@@ -61,6 +73,9 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 
 angular.module('Lab2App').filter('reverse', function() {
   return function(items) {
+  	if(!items){
+  		return [];
+  	}
     return items.slice().reverse();
   };
 });
