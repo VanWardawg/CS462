@@ -81,7 +81,7 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 	console.log("id:" + id);
 	var _user;
 	var message = req.body;
-	console.log("message:" + message);
+	console.log("message:" + JSON.stringify(message));
 	console.log("message Rumor:" + message.rumor);
 	for(var i = 0; i < data.users.length;i++){
 		var user = data.users[i];
