@@ -82,7 +82,7 @@ app.post('/backend/users/:id/gossip', function (req, res) {
 	var _user;
 	var message = req.body;
 	console.log("message:" + JSON.stringify(message));
-	console.log("message Rumor:" + message.rumor);
+	console.log("message Rumor:" + message.Rumor);
 	for(var i = 0; i < data.users.length;i++){
 		var user = data.users[i];
 		console.log("User:" + user.id + " id: " + id);
@@ -210,7 +210,8 @@ function prepareMessage(user, peer){
 		console.log("Preparing Want");
 		message.Want = {};
 		user.wants = user.wants || {};
-		for(var id in user.wants){
+		for(var i = 0; i < user.peers.length; i++){
+			var id = user.peers[i].id;
 			message.Want[id] = user.wants[id] ? user.wants[id] : 0;
 		}
 		console.log("Done Preparing Want:");
