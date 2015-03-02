@@ -244,7 +244,7 @@ function prepareMessage(user, peer){
 }
 
 function debug(msg){
-	var debug = false;
+	var debug = true;
 	if(debug){
 		console.log(msg);
 	}

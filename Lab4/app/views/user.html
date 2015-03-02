@@ -1,7 +1,7 @@
 <div class = "user-profile">
-{{user.username}} located at : {{user.url}}
+<b>{{user.username}}</b> is located at : {{user.url}}
 <div class = "isMe"> Is this me: {{isMe}}</div>
-<div ng-show="isMe">
+<div class = "inputStuff" ng-show="isMe">
 	Send a Gossip Message
 	<textarea type="text" ng-model="gossipMessage"></textarea><br>
 	<button type="button" ng-click="sendGossipMessage()">Send</button>
@@ -19,8 +19,6 @@
 	<br>
 </div>
 </div>
-
-
 <div class="user-messages">
 	<b>Rumors</b>
 	<div ng-repeat="message in user.rumors | reverse" class="border">
@@ -28,14 +26,5 @@
 		<p>Originator:{{message.Rumor.Originator}}</p>
 		<p>From {{user.username}}: {{message.isUser}}
 		<p>ID:{{message.Rumor.MessageID}}</p>
-	</div>
-</div>
-<div class="user-messages">
-	<b>Messages</b>
-	<div ng-repeat="message in user.messages" class="border">
-		<p>Text:{{message.Text}}</p>
-		<p>Originator:{{message.Originator}}</p>
-		<p>From {{user.username}}: {{message.isUser}}
-		<p>ID:{{message.MessageID}}</p>
 	</div>
 </div>
