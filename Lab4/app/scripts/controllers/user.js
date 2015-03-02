@@ -97,6 +97,7 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 				}
 			}
 		}
+		$scope.user.url = "https://52.0.11.73/backend/users/"+$scope.user.id+"/gossip";
 	}
 	if(!$rootScope.users){
 		$rootScope.getUsers($scope.setUser);

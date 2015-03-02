@@ -81,7 +81,7 @@ function addPeer(user, peer){
 	user.peers = user.peers || [];
 	var found = false;
 	for(var j = 0; j < user.peers.length;j++){
-		if(user.peers[i].url === peer.url){
+		if(user.peers[j].url === peer.url){
 			found = true;
 			break;
 		}
@@ -291,7 +291,7 @@ var minutes = .1, the_interval = minutes * 60 * 1000;
 setInterval(function() {
 // Run code
 	debug("Running message updates");
-	
+
 	for(var i = 0; i < data.users.length;i++){
 		sendMessage(data.users[i]);
 	}
