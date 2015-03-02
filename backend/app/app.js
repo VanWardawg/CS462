@@ -180,7 +180,7 @@ function getMessage(user, peer){
 	for(var i = 0; i < user.rumors.length;i++){
 		var message = user.rumors[i];
 		var origId = message.Rumor.MessageID.split(":")[0];
-		var seqId = message.Rumor.MessageID.split(":")[0];
+		var seqId = message.Rumor.MessageID.split(":")[1];
 		peer.wants = peer.wants || {};
 		if(origId !== peer.id){
 			if(!peer.wants[origId]){
