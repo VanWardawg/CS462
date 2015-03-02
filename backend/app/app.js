@@ -172,12 +172,10 @@ function writeToFile(){
 }
 
 function getPeer(user) {
-	console.log("Getting Peer from list of " + user.peers.length);
 	var peerIndex = Math.floor((Math.random() * user.peers.length));
 	if(peerIndex == user.peers.length){
 		peerIndex -= 1;
 	}
-	console.log("Peer" + user.peers[peerIndex]);
 	return user.peers[peerIndex];
 }
 
@@ -185,7 +183,7 @@ function getMessage(user, peer){
 	console.log("Selecting Message");
 	user.rumors = user.rumors || [];
 	for(var i = 0; i < user.rumors.length;i++){
-		console.log("Rumor Message is " + user.rumors[i].Text);
+		console.log("Rumor Message is " + user.rumors[i].Rumor.Text);
 		var message = user.rumors[i];
 		var origId = message.Rumor.MessageID.split(":")[0];
 		var seqId = message.Rumor.MessageID.split(":")[0];
@@ -207,44 +205,46 @@ function getMessage(user, peer){
 }
 
 function prepareMessage(user, peer){
-	console.log("Preparing Message");
 	var rumor = Math.floor((Math.random() * 3));
 	var message = {};
 	if(rumor != 2){
 		message.Rumor = getMessage(user,peer);
 		if(!message.Rumor){
-			console.log("Selected Rumor is: undefined");
 			return undefined;
 		}
-		console.log("Selected Rumor Text:" + message.Rumor.Text);
 	}
 	else {
-		console.log("Preparing Want");
 		message.Want = {};
 		user.wants = user.wants || {};
 		for(var i = 0; i < user.peers.length; i++){
 			var id = user.peers[i].id;
 			message.Want[id] = user.wants[id] ? user.wants[id] : 0;
 		}
-		console.log("Done Preparing Want:");
 	}
 	message.EndPoint = "https://52.0.11.73/backend/users/"+user.id+"/gossip";
 	return message;
 }
 
 function sendRequest(peer, message){
+	if(message.Rumor){
+		console.log("User sending Rumor msg:" + message.Rumor.MessageID);
+	}
+	else {
+		console.log("User sending Want msg");
+	}
+	console.log("Sending to: " + message.EndPoint);
 	try{
 		request.post(peer.url,{form:message});
 	}catch(e){
 		console.log("Error:" + e);
 	}
-	console.log("Finished Sending");
 }
 
 function sendMessage(user) {
 	if(!user.peers){
 		return;
 	}
+	console.log("User:" + user.id + " is trying to send a msg");
 	var msg;
 	var peer;
 	var i = 0;
@@ -257,22 +257,13 @@ function sendMessage(user) {
 		console.log("No Message Returning");
 		return;
 	}
-	console.log("Sending msg: " + msg);
-	console.log("to: " + peer.url);
 	sendRequest(peer,msg);
-}
-var msg = {"Rumor":{
-    "Text":"here",
-    "Originator":"Me",
-    "MessageId":"26d7e406-0c00-4b85-bb51-5ce814b4cc9a:0"
-	},
-	"EndPoint":"https://52.0.11.73/backend/users/26d7e406-0c00-4b85-bb51-5ce814b4cc9a/gossip"
 }
 
 var minutes = .3, the_interval = minutes * 60 * 1000;
 setInterval(function() {
 // Run code
-	console.log("running message updates");
+	console.log("Running message updates");
 	for(var i = 0; i < data.users.length;i++){
 		sendMessage(data.users[i]);
 	}
