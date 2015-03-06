@@ -2,10 +2,6 @@
 
 angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$rootScope','$http', function ($scope, $routeParams, $rootScope, $http) {
 
-	if(!$rootScope.users){
-		$rootScope.getUsers();
-	}
-
 	$scope.howMany = function() {
 		if($scope.isMe){
 			return 100;
@@ -24,11 +20,11 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 
 	}
 	$scope.addSimilarPeer = function() {
-		if($scope.selectedPeer.id == $rootScope.user.id ){
-			alert("You cannot add yourself");
+		if($scope.selectedPeer == null){
 			return;
 		}
-		if($scope.selectedPeer == null){
+		if($scope.selectedPeer.id == $rootScope.user.id ){
+			alert("You cannot add yourself");
 			return;
 		}
 		var peer = {
@@ -41,9 +37,6 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 
 	function addPeer(peer){
 		$http.post("https://52.0.11.73/backend/users/"+$rootScope.user.id+"/peers",peer).success(function(data){
-			$rootScope.user = data;
-			$scope.user = $rootScope.user;
-			$scope.gossipMessage = '';
 		});
 	}
 
@@ -56,6 +49,7 @@ angular.module('Lab2App').controller('UserCtrl', ['$scope','$routeParams','$root
 		};
 		$http.post("https://52.0.11.73/backend/users/"+$rootScope.user.id+"/message",message).success(function(data){
 			$rootScope.user = data;
+			$scope.setUser();
 			$scope.user = $rootScope.user;
 			$scope.gossipMessage = '';
 		});
