@@ -22,7 +22,7 @@ A song ruleset for the Lab5
   }
 
   rule find_hymn is active {
-    select when explicit sung song re#*god*#
+    select when explicit sung song re#god#
     fired {
       log "Song Sung with Hymn God"
     }
