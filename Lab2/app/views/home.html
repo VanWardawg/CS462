@@ -1,0 +1,20 @@
+<div class="main-page">
+	<div class = "login col-xs-3" ng-hide="user">
+		<div class = "login-header"> Sign up or Login here</div>
+		<div class = "inputs">
+			UserName<input ng-model="newuser.username" type="text"/>
+		</div>
+		<div class = "buttons" >
+			<button ng-click="register()" class="btn" type="submit">REGISTER</button>
+			<button ng-click="signIn()" class="btn" type="submit">SIGN IN</button>
+		</div>
+	</div>
+	<div class = "registered-users col-xs-3">
+		<div class="col-xs-12 user-header">
+			Registered Users
+		</div>
+		<div class="col-xs-12 user" ng-repeat="user in users">
+			<div class = "username clickable" ng-click="navigateTo(user.username)">{{user.username}}</div>
+		</div>
+	</div>
+</div>
