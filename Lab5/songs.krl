@@ -12,7 +12,7 @@ A song ruleset for the Lab5
   }
 
   rule songs is active {
-    select when echo message input "(.*)" setting(m) and msg_type re#sung#
+    select when echo message msg_type re#sung# input "(.*)" setting(m) 
     send_directive("sing") with
       song = m;
   }
