@@ -12,34 +12,47 @@ A song store ruleset for the Lab5
   }
   global {
     songs = function() {
-      return songs;
+      ent:songs
     };
     hymns = function() {
-      return hymns;
+      ent:hymns
     };
     secular_music = function() {
-      //return song from songs not in hymns
-    }
+      ent:songs.difference(ent:hymns)
+    };
   }
 
   rule collect_songs is active {
     select when explicit sung song "(.*)" setting(s)
+    pre {
+      songs = ent:songs || [];
+      song = {"song":s,"timestamp":time:now()};
+      songs = songs.append(song);
+    }
     fired {
-      //save song to songs entity variable
+      set ent:songs songs;
+      log "Song Sung" + s
     }
   }
 
   rule collect_hymns is active {
-    select when explict found_hymn hymn "(.*)" setting(h)
+    select when explicit found_hymn hymn "(.*)" setting(h)
+    pre {
+      hymns = ent:hymns || [];
+      hymn = {"hymn":h,"timestamp":time:now()};
+      hymns = hymns.append(hymn);
+    }
     fired {
-      //save hymn to hymns entity variable
+      log "Hymn Sung" + h
     }
   }
 
   rule clear_songs is active {
-    select when song clear
+    select when song cleared
     fired {
-      //clear songs and hymns entity variable
+      clear ent:hymns;
+      clear ent:songs;
+      log "Hymns and songs cleared"
     }
   }
  
