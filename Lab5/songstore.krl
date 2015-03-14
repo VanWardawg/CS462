@@ -43,6 +43,7 @@ A song store ruleset for the Lab5
       hymns = hymns.append(hymn);
     }
     fired {
+      set ent:hymns hymns;
       log "Hymn Sung" + h
     }
   }
