@@ -18,7 +18,13 @@ A song store ruleset for the Lab5
       ent:hymns
     };
     secular_music = function() {
-      ent:songs.difference(ent:hymns)
+      songs = ent:songs.map(function(x){
+          x{"song"}
+        });
+      hymns = ent:hymns.map(function(x){
+          x{"hymn"}
+        });
+      songs.difference(hymns);
     };
   }
 
